@@ -63,12 +63,61 @@ public class ListaDC {
     public void mostrarElementos() {
         String s = "";
         Nodo aux = inicio;
-        s += "Nombre: " + aux.getDato().getNombre() + " | ID: " + aux.getDato().getId() + "<=>";
+        s += "Nombre: " + aux.getDato().getNombre() + " | ID: " + aux.getDato().getId() + "\n+\n";
         aux = aux.getSiguiente();
         while (aux!=inicio) {
-            s += "Nombre: " + aux.getDato().getNombre() + " | ID: " + aux.getDato().getId() + "<=>";
+            s += "Nombre: " + aux.getDato().getNombre() + " | ID: " + aux.getDato().getId() + "\n+\n";
             aux = aux.getSiguiente();
         }
-        JOptionPane.showMessageDialog(null, "La lista contiene: \n" + s);
+        JOptionPane.showMessageDialog(null, "La lista contiene: \n\n" + s);
+    }
+
+    public boolean existe(int id) {
+        boolean esta = false;
+        Nodo aux = inicio;
+        if (aux.getDato().getId() == id) {
+            esta = true;
+        }
+        aux = aux.getSiguiente();
+        while (aux!=inicio) {
+            if (aux.getDato().getId() == id) {
+                esta = true;
+            }
+            aux = aux.getSiguiente();
+        }
+        
+        return esta;
+    }
+    
+    public void modifica(Persona p) {
+        Nodo aux = inicio;
+        if (aux.getDato().getId() == p.getId()) {
+            inicio.setDato(p);
+        }
+        aux = aux.getSiguiente();
+        while (aux!=inicio && aux.getDato().getId() != p.getId()) {
+            aux = aux.getSiguiente();
+        }
+        
+        aux.setDato(p);
+    }
+    
+    public void elimina(int id) {
+        Nodo actual = inicio;
+        if (actual.getDato().getId() == id) {
+            inicio = inicio.getSiguiente();
+//            fin.setSiguiente(inicio);
+        }
+        
+        
+        
+    }
+    
+    public Persona extrae(int id) {
+        Persona p = new Persona();
+        
+        
+        
+        return p;
     }
 }
